@@ -41,12 +41,21 @@ function App() {
     setTodo([...todo, newItem]);
     idRef.current += 1;
   };
+
+    /* 데이타 수정 하기*/
+    const OnUpdate = (targetId) => {
+      setTodo(
+        todo.map(
+          (it) => it.id === targetId ? {...it, isDone: !it.isDone} : it
+        )
+      )
+    };
   
   return (
     <div className="App">
       <Header />
-      <TodoEditor  onCreate = {onCreate}/>
-      <TodoList />
+      <TodoEditor  onCreate = {onCreate}  />
+      <TodoList todo = {todo} OnUpdate = {OnUpdate} />
     </div>
   )
 }

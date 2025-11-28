@@ -1,19 +1,22 @@
 import React from 'react';
 import "./TodoItem.css";
 
-const TodoItem = () => {
+const TodoItem = ({id, content, isDone, createDate, OnUpdate}) => {
+
     return (
         <div className='TodoItem'>
             <div className='checkbox_col'>
-                <input type="checkbox" />
+                <input type="checkbox" 
+                onClick={ ()=> OnUpdate(id)}
+                checked={isDone} />
             </div>
 
             <div className='title_col'>
-                할 일
+                {content}
             </div>
 
             <div className='date_col'>
-                {new Date().toLocaleDateString()}
+                {new Date(createDate).toLocaleDateString()}
             </div>
 
             <div className='btn_col'>
