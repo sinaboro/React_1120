@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './App.css'
 import Header from './component/Header'
 import TodoEditor from './component/TodoEditor'
@@ -28,16 +28,18 @@ const mockTodo = [
 function App() {
     
   const [todo, setTodo] = useState(mockTodo);
+  const idRef = useRef(3);
   
   /* 데이타 추가 하기*/
   const onCreate = (content) => {
     const newItem = {
-      id: 0,
+      id: idRef.current,
       isDone: false,
       content,
       createDate: new Date().getTime(),
     }
     setTodo([...todo, newItem]);
+    idRef.current += 1;
   };
   
   return (
