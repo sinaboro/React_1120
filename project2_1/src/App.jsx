@@ -1,9 +1,8 @@
-import { useReducer, useRef, useState } from 'react'
+import { useReducer, useRef} from 'react'
 import './App.css'
 import Header from './component/Header'
 import TodoEditor from './component/TodoEditor'
 import TodoList from './component/TodoList'
-import TestComp from './component/TestComp'
 
 const mockTodo = [
   {
@@ -26,37 +25,53 @@ const mockTodo = [
   },
 ]
 
+function reducer(state, action){
+
+  switch(action.type){
+    case "CREATE":
+      return [action.newItem, ...state];
+    case "UPDATE":
+      return state.map( (it) => it.id === action.id ? {...it, isDone: !it.isDone}: it )
+    case "DELETE":
+      return state.filter(it => it.id !== action.id)
+    default:
+      return state;
+  }
+}
+
 function App() {
   
-  const [todo, setTodo] = useState(mockTodo);
+  const [todo, dispatch] = useReducer(reducer, mockTodo)
   const idRef = useRef(3);
   
   /* 데이타 추가 하기*/
   const onCreate = (content) => {
-    const newItem = {
-      id: idRef.current,
-      isDone: false,
-      content,
-      createDate: new Date().getTime(),
-    }
-    setTodo([...todo, newItem]);
+    dispatch({
+      type: "CREATE",
+      newItem: {
+        id: idRef.current,
+        content: content,
+        isDone: false,
+        createDate: new Date().getTime()
+      }
+    })
     idRef.current += 1;
   };
 
   /* 데이타 수정 하기*/
   const OnUpdate = (targetId) => {
-    setTodo(
-      todo.map(
-        (it) => it.id === targetId ? {...it, isDone: !it.isDone} : it
-      )
-    )
+    dispatch({
+      type: "UPDATE",
+      id: targetId
+    });
   };
 
   /* 데이타 삭제 하기*/
   const onDelete = (targetId) =>{
-    setTodo(
-      todo.filter((it) => it.id !== targetId)
-    )
+    dispatch({
+      type: "DELETE",
+      id: targetId
+    });
   };
   
   return (
