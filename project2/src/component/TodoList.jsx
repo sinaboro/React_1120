@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./TodoList.css";
 import TodoItem from './TodoItem';
 
-const TodoList = ({todo, OnUpdate}) => {
+const TodoList = ({todo, OnUpdate, onDelete}) => {
     const [search, setSearch] = useState("");
 
     const onChangeSearch = (e)=>{
@@ -29,7 +29,7 @@ const TodoList = ({todo, OnUpdate}) => {
             {
                 getSearchResult().map(
                     (it) => ( 
-                        <TodoItem key={it.id} {...it}  OnUpdate = {OnUpdate}/>
+                        <TodoItem key={it.id} {...it}  OnUpdate = {OnUpdate}  onDelete = {onDelete}/>
                     )
                 )
             }

@@ -42,20 +42,28 @@ function App() {
     idRef.current += 1;
   };
 
-    /* 데이타 수정 하기*/
-    const OnUpdate = (targetId) => {
-      setTodo(
-        todo.map(
-          (it) => it.id === targetId ? {...it, isDone: !it.isDone} : it
-        )
+  /* 데이타 수정 하기*/
+  const OnUpdate = (targetId) => {
+    setTodo(
+      todo.map(
+        (it) => it.id === targetId ? {...it, isDone: !it.isDone} : it
       )
-    };
+    )
+  };
+
+  /* 데이타 삭제 하기*/
+  const onDelete = (targetId) =>{
+    setTodo(
+      todo.filter((it) => it.id !== targetId)
+    )
+  };
+
   
   return (
     <div className="App">
       <Header />
       <TodoEditor  onCreate = {onCreate}  />
-      <TodoList todo = {todo} OnUpdate = {OnUpdate} />
+      <TodoList todo = {todo} OnUpdate = {OnUpdate}  onDelete={onDelete}/>
     </div>
   )
 }

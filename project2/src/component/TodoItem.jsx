@@ -1,7 +1,7 @@
 import React from 'react';
 import "./TodoItem.css";
 
-const TodoItem = ({id, content, isDone, createDate, OnUpdate}) => {
+const TodoItem = ({id, content, isDone, createDate, OnUpdate, onDelete}) => {
 
     return (
         <div className='TodoItem'>
@@ -20,7 +20,7 @@ const TodoItem = ({id, content, isDone, createDate, OnUpdate}) => {
             </div>
 
             <div className='btn_col'>
-                <button>삭제</button>
+                <button onClick={() =>onDelete(id) }>삭제</button>
             </div>
         </div>
     );
