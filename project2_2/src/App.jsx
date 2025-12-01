@@ -83,7 +83,7 @@ function App() {
 
       <Header />
 
-      <TodoContext.Provider value ={{todo, onCreate, OnUpdate , onDelete }}>
+      <TodoContext.Provider value ={{todo, onCreate, OnUpdate , onDelete }}>        
         <TodoEditor />
         <TodoList />
       </TodoContext.Provider>
