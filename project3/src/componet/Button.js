@@ -1,9 +1,9 @@
 import React from 'react';
 import "./Button.css";
-
+        //type = "nagative"
 const Button = ({text, type, onClick}) => {
-    const btnType = ["positive", "nagative"].includes(type) 
-        ? type : "default";
+    const btnType = 
+        ["positive", "nagative"].includes(type) ? type : "default";
 
     return (
         <button className={["Button", `Button_${btnType}`].join(" ")}
