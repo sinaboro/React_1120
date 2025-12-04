@@ -3,7 +3,8 @@ import Editor from '../componet/Editor';
 const Home = () => {   
     return (
         <div>
-            <Editor />
+            <Editor onSubmit = 
+            { (state)=> alert(state.content)} />
         </div>
     );
 };
