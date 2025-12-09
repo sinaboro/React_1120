@@ -140,13 +140,7 @@ function App() {
               <Route path="/new" element={ <New />} />
               <Route path="/diary/:id" element={ <Diary />} />   
               <Route path="/edit/:id" element={ <Edit />} />
-            </Routes>
-            <div>
-              <Link to={"/"}>Home</Link>
-              <Link to={"/new"}>New</Link>
-              <Link to={"/diary"}>Diary</Link>        
-              <Link to={"/edit"}>Edit</Link>      
-            </div>
+            </Routes>            
           </div>
         </DiaryDispatchContext.Provider>
       </DiaryStateContext.Provider>
