@@ -68,3 +68,21 @@ export const emotionList = [
         img: getEmotionImgById(5),
     },
 ];
+
+export const getMonthRangeByDate = (date) => {
+    const beginTimeDate = new Date(
+                date.getFullYear(), 
+                date.getMonth(), 
+                1).getTime();
+    
+    const endTimeStamp = new Date(
+        date.getFullYear(),
+        date.getMonth() +1,
+        0,
+        23,
+        59,
+        59
+    ).getTime();
+   
+    return {beginTimeDate, endTimeStamp};
+};
