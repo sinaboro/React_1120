@@ -61,19 +61,19 @@ function reducer(state, action){
 const mockData = [
   {
     id: "mock1",
-    date: new Date().getTime() - 1,
+    date: new Date().getTime() ,
     content: "mock1",
     emotionId: 1,
   },
   {
     id: "mock2",
-    date: new Date().getTime() - 2,
+    date: new Date().getTime(),
     content: "mock2",
     emotionId: 2,
   },
   {
     id: "mock3",
-    date: new Date().getTime() - 3,
+    date: new Date().getTime(),
     content: "mock3",
     emotionId: 3,
   }
@@ -95,7 +95,7 @@ function App() {
     setIsDataLoaded(true);
   }, []);
 
-  const onCreate = (date, content, emotionId) => {
+  const onCreate = ({ date, content, emotionId }) => {
     dispatch({
       type: "CREATE",
       data: {
@@ -139,7 +139,7 @@ function App() {
               <Route path="/" element={ <Home />} />
               <Route path="/new" element={ <New />} />
               <Route path="/diary/:id" element={ <Diary />} />   
-              <Route path="/edit" element={ <Edit />} />
+              <Route path="/edit/:id" element={ <Edit />} />
             </Routes>
             <div>
               <Link to={"/"}>Home</Link>

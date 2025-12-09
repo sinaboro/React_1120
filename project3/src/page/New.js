@@ -12,9 +12,14 @@ const New = () => {
         navigate(-1);
     }
 
-    const onSubmit = (data) => {
-        const {date, content, emotionId} = data;
-        onCreate(date, content, emotionId);
+    const onSubmit = (data) => {     
+        //onCreate(data)
+        /*
+            date: getFormattedDate(new Date()),
+            emotionId: 3,
+            content: ""
+        */
+        onCreate({...data});
         navigate("/", {relative: true});
     };
 
@@ -29,4 +34,4 @@ const New = () => {
     );
 };
 
-    export default New;
+export default New;
