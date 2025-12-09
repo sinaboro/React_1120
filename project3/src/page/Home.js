@@ -9,7 +9,7 @@ import DiaryList from '../componet/DiaryList';
 const Home = () => {   
     const data = useContext(DiaryStateContext);
     const [filteredData, setFilteredData] = useState([]);
-
+    
     const [pivotDate, setPivotDate] = useState(new Date());
 
     const headerTitle = `${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`
@@ -42,7 +42,7 @@ const Home = () => {
                 rightChild = {<Button text={">"} onClick={onIncreaseMonth} />}
             />
 
-            <DiaryList />
+            <DiaryList data={filteredData}/>
         </>
     );
 };
