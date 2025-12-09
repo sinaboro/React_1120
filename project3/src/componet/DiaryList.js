@@ -70,7 +70,7 @@ const DiaryList = ({data}) => {
                     />
                 </div>
             </div>
-            <div className='menu_wrapper'>
+            <div className='list_wrapper'>
                 { sortedData.map( (it) => (
                     <DiaryItem key={it.id} {...it}/>
                 ))
