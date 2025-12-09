@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Button from './Button';
 import "./DiaryList.css";
 import { useNavigate } from 'react-router-dom';
+import DiaryItem from './DiaryItem';
 
 const sortOptionList = [
     {value: "latest", name: "최신순"},
@@ -22,7 +23,6 @@ const DiaryList = ({data}) => {
                 return Number(a.date) - Number(b.date);
             }
         };
-
         /*
             {name: "홍길동", age: 20} -> js객체
             {"name": "홍길동", "age": 20} -> json
@@ -35,8 +35,6 @@ const DiaryList = ({data}) => {
         const copyList = JSON.parse(JSON.stringify(data));
         copyList.sort(compare);
         setSortedData(copyList);
-
-
     }, [data, sortType]);
 
     const onChangeSortType = (e)=>{
@@ -72,6 +70,12 @@ const DiaryList = ({data}) => {
                     />
                 </div>
             </div>
+            <div className='menu_wrapper'>
+                { sortedData.map( (it) => (
+                    <DiaryItem key={it.id} {...it}/>
+                ))
+                }
+            </div>  
         </div>
     );
 };
