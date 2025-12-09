@@ -4,19 +4,27 @@ import useDiary from '../hooks/useDiary';
 import Header from '../componet/Header';
 import Button from '../componet/Button';
 import { DiaryDispatchContext } from '../App';
+import Editor from '../componet/Editor';
 
 const Edit = () => {
     const {id} = useParams();
     const data = useDiary(id);
     const navigate = useNavigate();
-    const {OnDelete} = useContext(DiaryDispatchContext);
+    const {OnDelete, OnUpdate} = useContext(DiaryDispatchContext);
 
     const onClickDelete = () => {
         if(window.confirm("일기를 정말 삭제할까요?")){
             OnDelete(id);
             navigate("/", {replace: true});
         }
+    };   
+    const onClickUpdate = (data) => {
+        if(window.confirm("일기를 정말 수정할까요?")){            
+            OnUpdate(data);
+            navigate("/", {replace: true});
+        }
     };
+
 
     const goBack = () => {
         navigate(-1);
@@ -36,7 +44,9 @@ const Edit = () => {
                                 type={"negative"} 
                                 onClick={onClickDelete}
                         />}
-                />        
+                /> 
+
+                <Editor initData={data} onSubmit={onClickUpdate} />       
             </div>
         );
     }

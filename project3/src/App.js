@@ -108,11 +108,11 @@ function App() {
     idRef.current += 1;
   }
 
-  const OnUpdate = (targetId, date, content, emotionId) => {
+  const OnUpdate = ({id, date, content, emotionId}) => {
     dispatch({
       type: "UPDATE",
       data: {
-        id: targetId,
+        id: id,
         date: new Date(date).getTime(),
         content,
         emotionId

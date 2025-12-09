@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import Button from '../componet/Button';
-import Editor from '../componet/Editor';
 import Header from '../componet/Header';
 import { DiaryStateContext } from '../App';
 import { getMonthRangeByDate } from '../util';

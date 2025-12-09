@@ -38,7 +38,17 @@ const Editor = ({initData, onSubmit}) => {
         });
     };
 
+    const handleChangeEmotion = (emotionId) => {
+        setState({
+            ...state,
+            emotionId: emotionId
+        });
+    };
+
     const handleSubmit = () => {
+        console.log("------handleSubmit--------")
+        console.log(state)        
+        console.log("-----handleSubmit---------")
         onSubmit(state);
     };
 
@@ -46,12 +56,6 @@ const Editor = ({initData, onSubmit}) => {
         navigate(-1);
     };
 
-    const handleChangeEmotion = (emotionId) => {
-        setState({
-            ...state,
-            emotionId: emotionId
-        });
-    };
 
     return (
         <div className='Editor'>
