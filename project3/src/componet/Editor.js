@@ -45,10 +45,7 @@ const Editor = ({initData, onSubmit}) => {
         });
     };
 
-    const handleSubmit = () => {
-        console.log("------handleSubmit--------")
-        console.log(state)        
-        console.log("-----handleSubmit---------")
+    const handleSubmit = () => {      
         onSubmit(state);
     };
 
