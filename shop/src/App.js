@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import {Navbar, Container, Nav} from 'react-bootstrap'
+import {Navbar, Container, Nav, Button} from 'react-bootstrap'
 import data from "./db/fruit";
 import Products from "./components/Products";
 import { Routes, Route, useNavigate} from 'react-router-dom';
@@ -9,13 +9,32 @@ import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Member from "./components/Member";
 import Location from "./components/Location";
+import Title from "./components/Title";
 
 function App() {
 
-  const [fruit] = useState(data);
+  const [fruit, setFruit] = useState(data);
   const navigate = useNavigate();
 
   console.log(fruit);
+
+  const sortByName = () => {
+    let sortedFruit = [...fruit].sort((a, b) => (a.title > b.title ? 1 : -1));
+    setFruit(sortedFruit);
+    console.log(sortedFruit);
+  };
+
+  const sortByPriceLowToHigh = () => {
+    let sortedFruit = [...fruit].sort((a, b) => a.price - b.price);
+    setFruit(sortedFruit);
+    console.log(sortedFruit);
+  };
+
+  const sortByPriceHighToLow = () => {
+    let sortedFruit = [...fruit].sort((a, b) => b.price - a.price);
+    setFruit(sortedFruit);
+    console.log(sortedFruit);
+  };
 
   return (
     <div className="App">
@@ -32,8 +51,20 @@ function App() {
       </Navbar>
     
       <Routes>
-          <Route path="/" element={<div>
+          <Route path="/" element={<div>            
             <div className="slider"></div>
+              <Title />
+
+              <div class="container">
+                <div class="row">
+                  <div style={{ textAlign: "center" }}>
+                    <Button className="me-2" variant="outline-primary" onClick={sortByName}>이름순 정렬</Button>
+                    <Button className="me-2" variant="outline-secondary" onClick={sortByPriceLowToHigh}>낮은가격순 정렬</Button>
+                    <Button variant="outline-success" onClick={sortByPriceHighToLow}>높은가격순 정렬</Button>
+                  </div>
+                  </div>
+              </div>
+
               <div className="container" style={{marginTop:'30px'}}>
               <div className="row">                    
                 {

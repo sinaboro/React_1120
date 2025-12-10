@@ -1,8 +1,13 @@
 import { useParams } from "react-router-dom";
+
 function Detail(props) {
+    
     let {paramId} = useParams();
     //console.log(paramId);
-    const { imgUrl, title, content, price } = props.fruit[paramId];
+    //const { imgUrl, title, content, price } = props.fruit[paramId];
+
+    let item = props.fruit.find(f => f.id === parseInt(paramId));
+    const { imgUrl, title, content, price } = item;
 
     return (
         <div className="container">

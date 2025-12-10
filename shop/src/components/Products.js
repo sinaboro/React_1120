@@ -7,7 +7,7 @@ const Products = ({ id, title, price, imgUrl, content}) => {
     
     return (
         <div className="col-md-4" style={{ marginBottom: "50px" }}>
-            <Nav.Link className="c1" onClick={() => navigate(`/detail/${id-1}`)}>
+            <Nav.Link className="c1" onClick={() => navigate(`/detail/${id}`)}>
                 <img src={imgUrl} width="80%" />
                 <h5 style={{ marginTop: "10px" }}>{title}</h5>
                 <p>{content}</p>
