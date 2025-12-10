@@ -1,6 +1,5 @@
 import React from "react";
-const Products = ({ id, title, price, imgUrl, content}) => {
-    
+const Products = ({ id, title, price, imgUrl, content}) => {    
     return (
         <div className="col-md-4" style={{ marginBottom: "50px" }}>
             <img src={imgUrl} width="80%" />
