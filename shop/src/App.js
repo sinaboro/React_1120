@@ -34,11 +34,12 @@ function App() {
       <Routes>
           <Route path="/" element={<div>
             <div className="slider"></div>
-              <div className="container" style={{textAlign:"center"}}>
+              <div className="container" style={{marginTop:'30px'}}>
               <div className="row">                    
-              {
+                {
                   fruit.map((fruit) =>  
-                  <Products {...fruit} key={fruit.id} />)
+                    <Products {...fruit} key={fruit.id} />
+                  )
                 }
               </div>
               </div>
