@@ -15,6 +15,7 @@ import data2 from "./db/veggie";
 import ComVeggie from "./components/ComVeggie";
 import Footer from "./components/Footer";
 import axios from 'axios'
+import Cart from "./components/Cart";
 
 function App() {
 
@@ -121,6 +122,7 @@ function App() {
           } />
         
           <Route path="/detail/:paramId" element={<Detail fruit = {fruit} />} />          
+          <Route path="/cart" element={<Cart />}/>
           <Route path="/about" element={<About />} >
             <Route path="member" element={<Member />} />
             <Route path="location" element={<Location />} />
