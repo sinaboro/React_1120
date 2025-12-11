@@ -10,10 +10,14 @@ import About from "./components/About";
 import Member from "./components/Member";
 import Location from "./components/Location";
 import Title from "./components/Title";
+import Title2 from "./components/Title2";
+import data2 from "./db/veggie";
+import ComVeggie from "./components/ComVeggie";
 
 function App() {
 
   const [fruit, setFruit] = useState(data);
+  let [veggie, setVeggie] = useState(data2);
   const navigate = useNavigate();
 
   console.log(fruit);
@@ -55,8 +59,8 @@ function App() {
             <div className="slider"></div>
               <Title />
 
-              <div class="container">
-                <div class="row">
+              <div className="container">
+                <div className="row">
                   <div style={{ textAlign: "center" }}>
                     <Button className="me-2" variant="outline-primary" onClick={sortByName}>이름순 정렬</Button>
                     <Button className="me-2" variant="outline-secondary" onClick={sortByPriceLowToHigh}>낮은가격순 정렬</Button>
@@ -66,28 +70,46 @@ function App() {
               </div>
 
               <div className="container" style={{marginTop:'30px'}}>
-              <div className="row">                    
-                {
-                  fruit.map((fruit) =>  
-                    <Products {...fruit} key={fruit.id} />
-                  )
-                }
+                <div className="row">                    
+                  {
+                    fruit.map((fruit) =>  
+                      <Products {...fruit} key={fruit.id} />
+                    )
+                  }
+                </div>
               </div>
+
+              <div className="container">
+                <div className="row">
+                      <div style={{ textAlign: "center" }}>
+                        <Title2 />
+                        <Button variant="outline-success"> + 3개 상품 더 보기 </Button> 
+                    
+                        <div className="container" style={{ marginTop: "30px" }}>
+                          <div className="row">
+                              {veggie.map((ele, i) => {
+                                    return <ComVeggie veggie={veggie[i]} key={veggie[i].id} />;
+                                  })}
+                          </div>
+                        </div>
+                    </div>
+                </div>
               </div>
+
           </div> } />
-          
-          <Route path="/detail/:paramId" element={<Detail fruit = {fruit} />} />
-          
+
+          <Route path="/detail/:paramId" element={<Detail fruit = {fruit} />} />          
           <Route path="/about" element={<About />} >
             <Route path="member" element={<Member />} />
             <Route path="location" element={<Location />} />
           </Route>
-
-
           <Route path="/*" element={ <NotFound /> } />      
         </Routes>
+
     </div>
-  );
+
+    
+);
 }
 
 
