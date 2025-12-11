@@ -85,7 +85,7 @@ function App() {
               <div className="container mt-3">
                 <div className="row">
                   {veggie.map((item) => (
-                    <ComVeggie veggie={item} key={item.id} />
+                    <ComVeggie {...item} key={item.id} />
                   ))}
                 </div>
               </div>
