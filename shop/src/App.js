@@ -83,7 +83,7 @@ function App() {
                       <Button variant="outline-success"
                         count = {count} onClick={() => {
                         if(count==1){
-                          axios.get('https://sinaboro.github.io/react_data/veggie9.json').
+                          axios.get('https://sinaboro.github.io/react_data/veggie2.json').
                             then((result)=>{
                                 let copy6 =[...veggie, ...result.data];
                                 setVeggie(copy6);
