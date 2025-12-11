@@ -55,10 +55,10 @@ function App() {
       </Navbar>
     
       <Routes>
-          <Route path="/" element={<div>            
-            <div className="slider"></div>
+          <Route path="/" element={
+            <div>            
+              <div className="slider"></div>
               <Title />
-
               <div className="container">
                 <div className="row">
                   <div style={{ textAlign: "center" }}>
@@ -68,7 +68,6 @@ function App() {
                   </div>
                   </div>
               </div>
-
               <div className="container" style={{marginTop:'30px'}}>
                 <div className="row">                    
                   {
@@ -81,22 +80,22 @@ function App() {
 
               <div className="container">
                 <div className="row">
-                      <div style={{ textAlign: "center" }}>
-                        <Title2 />
-                        <Button variant="outline-success"> + 3개 상품 더 보기 </Button> 
-                    
-                        <div className="container" style={{ marginTop: "30px" }}>
-                          <div className="row">
-                              {veggie.map((ele, i) => {
-                                    return <ComVeggie veggie={veggie[i]} key={veggie[i].id} />;
-                                  })}
-                          </div>
+                        <div style={{ textAlign: "center" }}>
+                            <Title2 />
+                            <Button variant="outline-success"> + 3개 상품 더 보기 </Button> 
                         </div>
-                    </div>
-                </div>
+                  </div>
               </div>
 
-          </div> } />
+              <div className="container mt-3">
+                <div className="row">
+                  {veggie.map((item) => (
+                    <ComVeggie veggie={item} key={item.id} />
+                  ))}
+                </div>
+              </div>
+            </div> 
+          } />
 
           <Route path="/detail/:paramId" element={<Detail fruit = {fruit} />} />          
           <Route path="/about" element={<About />} >
@@ -104,8 +103,7 @@ function App() {
             <Route path="location" element={<Location />} />
           </Route>
           <Route path="/*" element={ <NotFound /> } />      
-        </Routes>
-
+        </Routes>                    
     </div>
 
     
