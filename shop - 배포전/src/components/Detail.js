@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
+
 function Detail(props) {
     
     let [tap, setTap] = useState(0);   
@@ -34,7 +35,7 @@ function Detail(props) {
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                <img src={process.env.PUBLIC_URL+"/"+imgUrl} width="100%" alt={title} />
+                <img src={'/' + imgUrl} width="100%" alt={title} />
                 {/* <img src={process.env.PUBLIC_URL + '/' + imgUrl} width="100%" alt={title} /> */}
                 </div>
                 <div className="col-md-6">

@@ -59,8 +59,7 @@ function App() {
       <Routes>
           <Route path="/" element={
             <div>            
-              <div className="slider" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/img/slider.jpg'})`, }}>
-              </div>
+              <div className="slider"></div>
               <Title />
               
               <div className="container">
@@ -177,6 +176,10 @@ function App() {
         </Routes>                    
         
     </div>
-  );
+
+    
+);
 }
+
+
 export default App;
