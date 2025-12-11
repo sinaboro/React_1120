@@ -13,11 +13,14 @@ import Title from "./components/Title";
 import Title2 from "./components/Title2";
 import data2 from "./db/veggie";
 import ComVeggie from "./components/ComVeggie";
+import Footer from "./components/Footer";
+import axios from 'axios'
 
 function App() {
 
   const [fruit, setFruit] = useState(data);
   let [veggie, setVeggie] = useState(data2);
+  let [count, setCount] = useState(1);
   const navigate = useNavigate();
 
   const sortByName = () => {
@@ -39,10 +42,10 @@ function App() {
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">과일농장</Navbar.Brand>
+          <Navbar.Brand onClick={()=> navigate("/")}>과일농장</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{ navigate('/')}}>홈으로</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/detail')}}>상세페이지</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/detail/1')}}>상세페이지</Nav.Link>
             <Nav.Link onClick={() => { navigate('/cart') }}>장바구니</Nav.Link> 
             <Nav.Link onClick={() => { navigate('/about') }}>회사소개</Nav.Link> 
           </Nav>
@@ -75,10 +78,29 @@ function App() {
 
               <div className="container">
                 <div className="row">
-                        <div style={{ textAlign: "center" }}>
-                            <Title2 />
-                            <Button variant="outline-success"> + 3개 상품 더 보기 </Button> 
-                        </div>
+                  <div style={{ textAlign: "center" }}>
+                      <Title2 />
+                      <Button variant="outline-success"
+                        count = {count} onClick={() => {
+                        if(count==1){
+                          axios.get('https://sinaboro.github.io/react_data/veggie2.json').then((result)=>{
+                              let copy10 =[...veggie, ...result.data];
+                              setVeggie(copy10);
+                              setCount(count + 1);
+                      
+                        })}else if(count==2){
+                          axios.get('https://sinaboro.github.io/react_data/veggie3.json').then((result)=>{
+                            let copy11 =[...veggie, ...result.data];
+                            setVeggie(copy11);
+                            setCount(count + 1);
+                            })   
+                        }
+                        if(count===3){
+                          alert("더이상 상품이 없습니다.");  
+                        }
+                      }}
+                      > + 3개 상품 더 보기 </Button> 
+                  </div>
                   </div>
               </div>
 
@@ -89,9 +111,10 @@ function App() {
                   ))}
                 </div>
               </div>
+              <Footer /> 
             </div> 
           } />
-
+        
           <Route path="/detail/:paramId" element={<Detail fruit = {fruit} />} />          
           <Route path="/about" element={<About />} >
             <Route path="member" element={<Member />} />
@@ -99,6 +122,7 @@ function App() {
           </Route>
           <Route path="/*" element={ <NotFound /> } />      
         </Routes>                    
+        
     </div>
 
     
