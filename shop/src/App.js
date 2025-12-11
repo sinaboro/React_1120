@@ -83,19 +83,24 @@ function App() {
                       <Button variant="outline-success"
                         count = {count} onClick={() => {
                         if(count==1){
-                          axios.get('https://sinaboro.github.io/react_data/veggie2.json').then((result)=>{
-                              let copy10 =[...veggie, ...result.data];
-                              setVeggie(copy10);
-                              setCount(count + 1);
-                      
-                        })}else if(count==2){
+                          axios.get('https://sinaboro.github.io/react_data/veggie9.json').
+                            then((result)=>{
+                                let copy6 =[...veggie, ...result.data];
+                                setVeggie(copy6);
+                                setCount(count + 1);
+                        
+                            }).catch( () => {
+                                alert("주소가 잘못되었습니다.")
+                                setCount(count + 1)
+                            }
+                            )
+                        }else if(count==2){
                           axios.get('https://sinaboro.github.io/react_data/veggie3.json').then((result)=>{
-                            let copy11 =[...veggie, ...result.data];
-                            setVeggie(copy11);
+                            let copy9 =[...veggie, ...result.data];
+                            setVeggie(copy9);
                             setCount(count + 1);
                             })   
-                        }
-                        if(count===3){
+                        }else if(count>=3){
                           alert("더이상 상품이 없습니다.");  
                         }
                       }}
