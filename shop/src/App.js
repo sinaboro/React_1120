@@ -16,6 +16,7 @@ import ComVeggie from "./components/ComVeggie";
 import Footer from "./components/Footer";
 import axios from 'axios'
 import Cart from "./components/Cart";
+import Board from "./components/Board";
 
 function App() {
 
@@ -49,7 +50,8 @@ function App() {
             <Nav.Link onClick={()=>{ navigate('/')}}>홈으로</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('/detail/1')}}>상세페이지</Nav.Link>
             <Nav.Link onClick={() => { navigate('/cart') }}>장바구니</Nav.Link> 
-            <Nav.Link onClick={() => { navigate('/about') }}>회사소개</Nav.Link> 
+            <Nav.Link onClick={() => { navigate('/about') }}>회사소개</Nav.Link>
+            <Nav.Link onClick={() => { navigate("/board");}}>게시판</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -169,7 +171,8 @@ function App() {
             <Route path="member" element={<Member />} />
             <Route path="location" element={<Location />} />
           </Route>
-          <Route path="/*" element={ <NotFound /> } />      
+          <Route path="/board" element={<Board/>} />
+          <Route path="/*" element={ <NotFound /> } />     
         </Routes>                    
         
     </div>

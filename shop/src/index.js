@@ -8,7 +8,7 @@ import store from './store'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store= {store}>
-    <BrowserRouter
+    <BrowserRouter basename='/fruit'
       future={{
         v7_startTransition: true,
         v7_relativeSplatPath: true,
