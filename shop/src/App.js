@@ -20,24 +20,19 @@ function App() {
   let [veggie, setVeggie] = useState(data2);
   const navigate = useNavigate();
 
-  console.log(fruit);
-
   const sortByName = () => {
     let sortedFruit = [...fruit].sort((a, b) => (a.title > b.title ? 1 : -1));
-    setFruit(sortedFruit);
-    console.log(sortedFruit);
+    setFruit(sortedFruit);    
   };
 
   const sortByPriceLowToHigh = () => {
     let sortedFruit = [...fruit].sort((a, b) => a.price - b.price);
-    setFruit(sortedFruit);
-    console.log(sortedFruit);
+    setFruit(sortedFruit);    
   };
 
   const sortByPriceHighToLow = () => {
     let sortedFruit = [...fruit].sort((a, b) => b.price - a.price);
-    setFruit(sortedFruit);
-    console.log(sortedFruit);
+    setFruit(sortedFruit);    
   };
 
   return (
